@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+*.assembling
+_chunks_*/
+part_*.bin
+todo.txt
+.env
+.env.*
+kaggle.json

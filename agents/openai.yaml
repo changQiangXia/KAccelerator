@@ -1,0 +1,3 @@
+interface:
+  display_name: "Kaggle Download Accelerator"
+  short_description: "Resumable, parallel downloads for Kaggle and HuggingFace assets"
