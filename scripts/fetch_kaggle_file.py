@@ -46,8 +46,10 @@ def content_length(url: str) -> int:
         url,
         headers={"Range": "bytes=0-0", "Accept-Encoding": "identity"},
         timeout=(20, 120),
+        stream=True,
     )
     response.raise_for_status()
+    response.close()
     value = response.headers.get("Content-Range", "")
     if "/" not in value:
         raise RuntimeError("missing Content-Range; cannot determine file size")

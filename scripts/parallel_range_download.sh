@@ -30,7 +30,7 @@ fetch_one() {
   # 192 分块里 2 块挂死 → 整份停摆）。默认 180s，可用 CURL_MAX_TIME 覆盖。
   local _maxt="${CURL_MAX_TIME:-180}"
   while [ "$have" -lt "$want" ]; do
-    curl -s --max-time "$_maxt" --connect-timeout 20 \
+    curl -sS --fail --max-time "$_maxt" --connect-timeout 20 \
          -r "$(( s + have ))-$e" -o - "$URL" >> "$f" || true
     local new; new=$(stat -c%s "$f" 2>/dev/null || echo "$have")
     if [ "$new" -gt "$want" ]; then
